@@ -1,0 +1,109 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load static %}
+<html>
+<head>
+	<title>Borderless Insurance</title>
+	<link rel="icon" href="/static/images/doc.png" type="image/gif" sizes="16x16">
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+	<link rel='stylesheet' href='/static/css/materialize.css'>
+    <style>
+
+        .card-info, .card__meta a {
+            color: #3299BB !important;
+            display: inline-flex;
+            vertical-align: middle;
+            line-height: 2;
+            font-size: 1rem;
+        }
+        .card__date {
+            background: #08c;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            line-height: 13px;
+            font-weight: bold;
+            padding-top: 7px;
+        }
+        .card__date__day {
+          display: block;
+          font-size: 22px;
+        }
+        .card__date__month {
+          display: block;
+          font-size: 12px;
+        }
+        .card .card-content p{
+          color: #1E1E1E;
+          font-size: 13px;
+        }
+
+        .card-row {
+          margin-bottom: 4px;
+            margin-top: 4px;
+        }
+        .card-action i {
+            vertical-align: text-bottom;
+            font-size: 21px;
+        }
+        .filter-container ul {
+            padding: 1rem 2rem;
+        }
+
+        .filter-container ul li {
+            display: block;
+            padding: 16px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'buy-insurance' %}">
+        {% csrf_token %}
+    <div class="section"></div>
+      <div class="input-field col s12">
+    <button type="submit" value="2" name="wheeler">2</button>
+          <button type="submit" value="4" name="wheeler">4</button>
+  </div>
+    {% if app_list %}
+
+        <h4 class="center">Insurers</h4>
+        {% for app in app_list %}
+                    <div class="container">
+                        <div class="row valign-wrapper">
+                            <div class="col s12 m12 valign">
+                                <div id="card-container" class="row">
+                                    <div class="col s12 m6 l4">
+                                        <div class="card grey lighten-5">
+                                            <div class="card-content white-text">
+                                                <div class="card__date">
+                                                    <span class="card__date__day">{{ app.insurance_type }}</span><br>
+                                                    <span class="card__date__month">Wheeler</span>
+                                                </div>
+                                                <h5 class="black-text">{{ app.insurance_name }}</h5><br>
+                                                <div class="row card-row">
+                                                    <span class="text-darken-2 card-info"><i class="small material-icons">attach_money</i>&nbsp;{{ app.insurance_basic_price }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-action">
+                                                <a href="{% url 'selected_insurer' app.id %}" class="red-text"><i class="material-icons red-text right">&nbsp;delete</i>Select Insurance</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+        {% endfor %}
+    {% endif %}
+    <div class="section"></div>
+</form>
+</body>
+</html>
+{% endblock %}

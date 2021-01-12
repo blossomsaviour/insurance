@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Blah</title>
+</head>
+<body>
+<form method="post" action="{% url 'testView' %}">
+    {% csrf_token %}
+    {% if app_list %}
+        {% for app in app_list %}
+        {{ app.insurance_name }}
+        {% endfor %}
+    {% else %}
+    <input type="submit" value="2" name="wheeler"/>2
+    <input type="submit" value="4" name="wheeler"/>4
+    {% endif %}
+</form>
+</body>
+</html>

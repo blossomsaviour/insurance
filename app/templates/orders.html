@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load static %}
+<html>
+<head>
+	<title>Borderless Insurance</title>
+	<link rel="icon" href="/static/images/doc.png" type="image/gif" sizes="16x16">
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+	<link rel='stylesheet' href='/static/css/materialize.css'>
+</head>
+<body>
+<table>
+        <thead>
+          <tr>
+              <th>Order ID</th>
+              <th>Insurer Name</th>
+              <th>Insurance Price</th>
+              <th>Username</th>
+          </tr>
+        </thead>
+        {% if app_list %}
+        {% for app in app_list %}
+        <tbody>
+          <tr>
+            <td>{{ app.orderid }}</td>
+            <td>{{ app.insurance_name }}</td>
+            <td>{{ app.price }}</td>
+              <td>{{ app.username }}</td>
+          </tr>
+        </tbody>
+    {% endfor %}
+    {% endif %}
+      </table>
+    <div class="section"></div>
+</form>
+</body>
+</html>
+{% endblock %}

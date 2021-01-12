@@ -1,0 +1,37 @@
+<html>
+<body>
+  <h1>My Shop</h1>
+  <p>
+    Invoice no. {{ order.orderid }}</br>
+  </p>
+
+  <h3>Bill to</h3>
+  <p>
+    {{ order.username }}<br>
+    {{ request.user.email }}<br>
+  </p>
+
+  <h3>Items bought</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order %}
+        <tr class="row{% cycle "1" "2" %}">
+          <td>{{ item.insurance_name }}</td>
+          <td class="num">${{ item.price }}</td>
+        </tr>
+      {% endfor %}
+      <tr class="total">
+        <td colspan="3">Total</td>
+        <td class="num">${{ item.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
