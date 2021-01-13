@@ -24,6 +24,7 @@ class insurance(models.Model):
     insurance_name = models.CharField(max_length=30)
     insurance_basic_price = models.IntegerField()
     insurance_type = models.IntegerField()
+    insurance_desc = models.CharField(max_length=200,null=True)
 
     def __str__(self):
         return self.insurance_name

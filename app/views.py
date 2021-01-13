@@ -1,4 +1,3 @@
-import weasyprint
 from django.http import HttpResponseForbidden, HttpResponse
 from django.template.loader import render_to_string
 from django.views.generic import TemplateView

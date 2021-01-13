@@ -50,11 +50,12 @@ class InsuranceForm(forms.ModelForm):
     insurance_name = forms.CharField()
     insurance_type = forms.IntegerField(label="Two or Four Wheeler")
     insurance_basic_price = forms.IntegerField()
+    insurance_desc = forms.CharField()
 
-    layout = Layout('insurance_name', 'insurance_type',
+    layout = Layout('insurance_name', 'insurance_type','insurance_desc',
                     Fieldset('Insurance details',
                              Row('insurance_basic_price')))
 
     class Meta:
         model = insurance
-        fields = ('insurance_name', 'insurance_type', 'insurance_basic_price',)
+        fields = ('insurance_name', 'insurance_type', 'insurance_desc', 'insurance_basic_price',)
